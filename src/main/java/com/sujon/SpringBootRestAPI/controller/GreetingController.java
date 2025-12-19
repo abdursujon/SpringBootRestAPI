@@ -1,7 +1,8 @@
-package com.sujon.SpringBootRestAPI.restservice;
+package com.sujon.SpringBootRestAPI.controller;
 import java.util.concurrent.atomic.AtomicLong;
+
+import com.sujon.SpringBootRestAPI.dto.GreetingRecord;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,7 +15,7 @@ public class GreetingController {
     private final AtomicLong counter = new AtomicLong();
 
     @GetMapping("/greeting")
-    public Greeting greeting(@RequestParam(defaultValue="World") String name) {
-        return new Greeting(counter.incrementAndGet(), String.format(template, name));
+    public GreetingRecord greeting(@RequestParam(defaultValue="World") String name) {
+        return new GreetingRecord(counter.incrementAndGet(), String.format(template, name));
     }
 }
